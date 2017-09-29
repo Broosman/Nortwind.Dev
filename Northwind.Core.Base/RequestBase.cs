@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Northwind.entities;
+using Northwind.Core.Common;
+
+namespace Northwind.Core.Base
+{
+    public class RequestBase
+    {
+
+        public entities.Customer Customer { get; set; }
+    }
+}

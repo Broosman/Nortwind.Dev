@@ -1,0 +1,259 @@
+﻿USE [AISCLLA_ClassicLab_stest]
+GO
+/****** Object:  StoredProcedure [dbo].[GetCustomerById]    Script Date: 2016-11-22 15:24:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[GetCustomerById] --'ALFKI'
+@CustomerId varchar(15)
+AS 
+SELECT [CustomerID]
+      ,[CompanyName]
+      ,[ContactName]
+      ,[ContactTitle]
+      ,[Address]
+      ,[City]
+      ,[Region]
+      ,[PostalCode]
+      ,[Country]
+      ,[Phone]
+      ,[Fax]
+	   FROM NW_Customer where customerid = @CustomerId 
+GO
+/****** Object:  StoredProcedure [dbo].[GetCustomerOrderProductSummary]    Script Date: 2016-11-22 15:24:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[GetCustomerOrderProductSummary]-- 'ALFKI'
+-- [dbo].[GetCustomerOrderProductSummary] 'ALFKI'
+@CustomerId varchar(15)
+AS 
+SELECT [CustomerID]
+      ,[CompanyName]
+      ,[ContactName]
+      ,[ContactTitle]
+      ,[Address]
+      ,[City]
+      ,[Region]
+      ,[PostalCode]
+      ,[Country]
+      ,[Phone]
+      ,[Fax]
+	   FROM NW_Customer where customerid = @CustomerId 
+
+SELECT [OrderID]
+      ,[CustomerID]
+      ,[EmployeeID]
+      ,[OrderDate]
+      ,[RequiredDate]
+      ,[ShippedDate]
+      ,[ShipVia]
+      ,[Freight]
+      ,[ShipName]
+      ,[ShipAddress]
+      ,[ShipCity]
+      ,[ShipRegion]
+      ,[ShipPostalCode]
+      ,[ShipCountry]
+	   FROM NW_ORDER where customerid = @CustomerId 
+
+SELECT DT.[OrderID]
+      ,DT.[ProductID]
+      ,DT.[UnitPrice]
+      ,DT.[Quantity]
+      ,DT.[Discount]
+	  FROM NW_ORDERDETAIL DT INNER JOIN  NW_ORDER O ON DT.ORDERID = O.ORDERID WHERE O.CUSTOMERID = @CustomerId  
+
+SELECT p.[ProductID]
+      ,p.[ProductName]
+      ,p.[SupplierID]
+      ,p.[CategoryID]
+      ,p.[QuantityPerUnit]
+      ,p.[UnitPrice]
+      ,p.[UnitsInStock]
+      ,p.[UnitsOnOrder]
+      ,p.[ReorderLevel]
+	  ,[Discontinued]
+	   FROM NW_Product p inner join NW_ORDERDETAIL DT on p.productid = dt.productid INNER JOIN  NW_ORDER O ON DT.ORDERID = O.ORDERID WHERE O.CUSTOMERID = @CustomerId  
+
+
+SELECT E.[EmployeeID]
+      ,E.[LastName]
+      ,E.[FirstName]
+      ,E.[Title]
+      ,E.[TitleOfCourtesy]
+      ,E.[BirthDate]
+      ,E.[HireDate]
+      ,E.[Address]
+      ,E.[City]
+      ,E.[Region]
+      ,E.[PostalCode]
+      ,E.[Country]
+      ,E.[HomePhone]
+      ,E.[Extension]
+      ,null as [Photo]
+      ,E.[Notes]
+      ,E.[ReportsTo]
+      ,E.[PhotoPath]
+  FROM [dbo].[NW_Employee] E inner
+  JOIN  NW_ORDER O ON E.EmployeeID  = O.EmployeeID  WHERE O.CUSTOMERID = @CustomerId  
+
+
+--SELECT [ShipperID]
+--      ,[CompanyName]
+--      ,[Phone]
+--  FROM [dbo].[NW_Shipper] S INNER JOIN NW_ORDER O ON O.ShipVia = S.ShipperID
+
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[InsertCustomer]    Script Date: 2016-11-22 15:24:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [dbo].[InsertCustomer]
+            @CustomerID nchar(5)
+           ,@CompanyName nvarchar(40)
+           ,@ContactName nvarchar(30)
+           ,@ContactTitle nvarchar(30)
+           ,@Address nvarchar(60)
+           ,@City nvarchar(15)
+           ,@Region nvarchar(15) = NULL
+           ,@PostalCode nvarchar(10)
+           ,@Country nvarchar(15)
+           ,@Phone nvarchar(24)
+           ,@Fax nvarchar(24)
+as
+
+INSERT INTO [dbo].[NW_Customer]
+           ([CustomerID]
+           ,[CompanyName]
+           ,[ContactName]
+           ,[ContactTitle]
+           ,[Address]
+           ,[City]
+           ,[Region]
+           ,[PostalCode]
+           ,[Country]
+           ,[Phone]
+           ,[Fax])
+     VALUES
+           (
+		    @CustomerID 
+           ,@CompanyName
+           ,@ContactName
+           ,@ContactTitle
+           ,@Address
+           ,@City
+           ,@Region
+           ,@PostalCode
+           ,@Country
+           ,@Phone
+           ,@Fax
+		   )
+
+GO
+/****** Object:  StoredProcedure [dbo].[SaveCustomer]    Script Date: 2016-11-22 15:24:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [dbo].[SaveCustomer] 
+            @CustomerID nchar(5)
+           ,@CompanyName nvarchar(40)
+           ,@ContactName nvarchar(30)
+           ,@ContactTitle nvarchar(30)
+           ,@Address nvarchar(60)
+           ,@City nvarchar(15)
+           ,@Region nvarchar(15) = NULL
+           ,@PostalCode nvarchar(10)
+           ,@Country nvarchar(15)
+           ,@Phone nvarchar(24)
+           ,@Fax nvarchar(24)
+AS
+
+
+
+If EXISTS (SELECT NULL FROM [dbo].[NW_Customer] WHERE CustomerID = @CustomerID)
+	BEGIN
+	EXEC [dbo].[UpdateCustomer]
+	       @CustomerID 
+           ,@CompanyName 
+           ,@ContactName 
+           ,@ContactTitle 
+           ,@Address 
+           ,@City 
+           ,@Region 
+           ,@PostalCode
+           ,@Country 
+           ,@Phone 
+           ,@Fax 
+	END
+ELSE
+	BEGIN
+	EXEC [dbo].[InsertCustomer]
+	       @CustomerID 
+           ,@CompanyName 
+           ,@ContactName 
+           ,@ContactTitle 
+           ,@Address 
+           ,@City 
+           ,@Region 
+           ,@PostalCode
+           ,@Country 
+           ,@Phone 
+           ,@Fax 
+	END 
+
+
+	EXEC [dbo].[GetCustomerById] @CustomerID 
+
+		
+GO
+/****** Object:  StoredProcedure [dbo].[UpdateCustomer]    Script Date: 2016-11-22 15:24:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [dbo].[UpdateCustomer]
+            @CustomerID nchar(5)
+           ,@CompanyName nvarchar(40)
+           ,@ContactName nvarchar(30)
+           ,@ContactTitle nvarchar(30)
+           ,@Address nvarchar(60)
+           ,@City nvarchar(15)
+           ,@Region nvarchar(15) = NULL
+           ,@PostalCode nvarchar(10)
+           ,@Country nvarchar(15)
+           ,@Phone nvarchar(24)
+           ,@Fax nvarchar(24)
+as
+
+UPDATE [dbo].[NW_Customer]
+   SET [CustomerID] = @CustomerID
+      ,[CompanyName] = @CompanyName
+      ,[ContactName] = @ContactName
+      ,[ContactTitle] = @ContactTitle
+      ,[Address] = @Address
+      ,[City] = @City
+      ,[Region] = @Region
+      ,[PostalCode] = @PostalCode
+      ,[Country] = @Country 
+      ,[Phone] = @Phone
+      ,[Fax] = @Fax
+ WHERE  CustomerID = @CustomerID
+
+GO
