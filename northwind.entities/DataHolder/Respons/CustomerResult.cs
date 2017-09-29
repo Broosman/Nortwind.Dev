@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Northwind.entities;
 using Northwind.Core.Common;
 
-namespace Northwind.Core.Customer
+namespace Northwind.entities
 {
     public class CustomerResult
     {

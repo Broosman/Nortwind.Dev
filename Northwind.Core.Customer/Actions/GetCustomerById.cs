@@ -17,10 +17,12 @@ namespace Northwind.Core.Customer.Actions
             {
                 var req = request as GetCustomerByIdRequest;
                 var Customerid = req.Customerid;
-                Rules.CheckCustomerId(Customerid);
-                Customer = null; // DbManager.GetCustomerById(Customerid);
-                Rules.ChangePhoneIf030(Customer.Phone);
-                return (U)Convert.ChangeType(Customer, typeof(U));
+               // Rules.CheckCustomerId(Customerid);
+                CustomerResult res = new CustomerResult();            
+                res.Customer = null; // DbManager.GetCustomerById(Customerid);
+                res.StatusObject = null;
+               // Rules.ChangePhoneIf030(Customer.Phone);
+                return (U)Convert.ChangeType(res, typeof(U));
             }
             catch (Exception e)
             {

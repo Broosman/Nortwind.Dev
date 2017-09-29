@@ -27,37 +27,18 @@ namespace Northwind.Core
     public class Controller
     {
        
-        //public static CustomerResult  GetCustomerById(RequestBase Request)
-        //{
-            
-        //    IBussinessObject GetCustomerById = null;
-        //    CustomerResult respons =null;
-        //    try
-        //    {
-        //        GetCustomerById = new GetCustomerById();
-        //        respons = new CustomerResult
-        //        {
-        //            Customer = GetCustomerById.Execute<entities.Customer>(Request),
-        //            StatusObject = GetCustomerById.StatusObject
-        //        };
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return new CustomerResult
-        //        {
-        //            Customer = null,
-        //            StatusObject = GetCustomerById.StatusObject
-        //        };
-        //    }
-        //    return respons;
-        //}
-
         public static U Get<T,U>(T request)
         {
-            //IBussinessObject Action = null;
-            IBussinessObject Action = GetTypeOf<T>(request);
-            Action.Execute<T, U>(request);
-            return default(U);
+            try
+            {
+                IBussinessObject Action = GetTypeOf<T>(request);
+                return Action.Execute<T, U>(request);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         private static IBussinessObject GetTypeOf<T>(T request)

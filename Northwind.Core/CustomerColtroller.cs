@@ -7,73 +7,93 @@ using System;
 
 namespace Northwind.Core
 {
-    public class CustomerController
+    public class CustomerController   
     {
 
-        public static CustomerResult Get<T>(T Request)
-        {
+        //public static CustomerResult Get<T>(T Request)
+        //{
 
-            IBussinessObject Action = GetTypeOf<T>(Request);
-            CustomerResult respons = null;
-           //Skicka in customerresult som U
-           // gör en get i Controller och är från den.
-            try
-            {
-                respons = new CustomerResult
-                {
-                    Customer = Action.Execute<GetCustomerByIdRequest, entities.Customer>(Request as GetCustomerByIdRequest),
-                    StatusObject = Action.StatusObject
-                };
-            }
-            catch (Exception e)
-            {
-                return new CustomerResult
-                {
-                    Customer = null,
-                    StatusObject = Action.StatusObject
-                };
-            }
-            return respons;
-        }
+        //    IBussinessObject Action = GetTypeOf<T>(Request);
+        //    CustomerResult respons = null;
+        //    //Skicka in customerresult som U
+        //    // gör en get i Controller och är från den.
+        //    try
+        //    {
+        //        respons = new CustomerResult
+        //        {
+        //            Customer = Action.Execute<T>(Request),
+        //            StatusObject = Action.StatusObject
+        //        };
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return new CustomerResult
+        //        {
+        //            Customer = null,
+        //            StatusObject = Action.StatusObject
+        //        };
+        //    }
+        //    return respons;
+        //}
+        //public static CustomerResult GetCustomerById<T>(T Request)
+        //{
+
+        //    IBussinessObject Action = GetTypeOf<T>(Request);
+        //    CustomerResult respons = null;
+        //    try
+        //    {
+        //        respons = new CustomerResult
+        //        {
+        //            Customer = Action.Execute<GetCustomerByIdRequest, entities.Customer>(Request as GetCustomerByIdRequest),
+        //            StatusObject = Action.StatusObject
+        //        };
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return new CustomerResult
+        //        {
+        //            Customer = null,
+        //            StatusObject = Action.StatusObject
+        //        };
+        //    }
+        //    return respons;
+        //}
+
+
         public static CustomerResult GetCustomerById<T>(T Request)
         {
-
-            IBussinessObject Action = GetTypeOf<T>(Request);
             CustomerResult respons = null;
             try
             {
-                respons = new CustomerResult
-                {
-                    Customer = Action.Execute<GetCustomerByIdRequest, entities.Customer>(Request as GetCustomerByIdRequest),
-                    StatusObject = Action.StatusObject
-                };
+                respons = Controller.Get<T, CustomerResult>(Request);
+                return respons;
             }
             catch (Exception e)
             {
                 return new CustomerResult
                 {
                     Customer = null,
-                    StatusObject = Action.StatusObject
+                    StatusObject = respons.StatusObject
                 };
             }
-            return respons;
         }
 
-        public static U Get<T, U>(T request)
-        {
-            //IBussinessObject Action = null;
-            IBussinessObject Action = GetTypeOf<T>(request);
-            Action.Execute<T, U>(request);
-            return default(U);
-        }
 
-        private static IBussinessObject GetTypeOf<T>(T request)
-        {
-            if (request is entities.GetCustomerByIdRequest)
-            {
-                return new GetCustomerById();
-            }
-            return null;
-        }
+        //public static U Get<T, U>(T request)
+        //{
+        //    //IBussinessObject Action = null;
+        //    IBussinessObject Action = GetTypeOf<T>(request);
+        //    Action.Execute<T, U>(request);
+        //    return default(U);
+        //}
+
+        //private static IBussinessObject GetTypeOf<T>(T request)
+        //{
+        //    if (request is entities.GetCustomerByIdRequest)
+        //    {
+        //        return new GetCustomerById();
+        //    }
+        //    return null;
+        //}
     }
 }
