@@ -53,7 +53,7 @@ namespace Northwind.Api.Controllers
         //    try
         //    {
         //        var oReq = new Core.BaseObjetcs.RequestBase();
-        //        oReq.Customer = new NW_Customer();
+        //        oReq.Customer = new Customer();
         //        oReq.Customer.CustomerID = Customerid;
         //        ////////////////////////////////////
         //        Respons = Core.NWManager.GetCustomerById(oReq);

@@ -27,19 +27,19 @@ namespace Northwind.Database.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<NW_Categorie> NW_Categorie { get; set; }
-        public virtual DbSet<NW_Customer> NW_Customer { get; set; }
-        public virtual DbSet<NW_CustomerCustomerDemo> NW_CustomerCustomerDemo { get; set; }
-        public virtual DbSet<NW_CustomerDemographic> NW_CustomerDemographic { get; set; }
-        public virtual DbSet<NW_Employee> NW_Employee { get; set; }
-        public virtual DbSet<NW_EmployeeTerritorie> NW_EmployeeTerritorie { get; set; }
-        public virtual DbSet<NW_Order> NW_Order { get; set; }
-        public virtual DbSet<NW_OrderDetail> NW_OrderDetail { get; set; }
-        public virtual DbSet<NW_Product> NW_Product { get; set; }
-        public virtual DbSet<NW_Region> NW_Region { get; set; }
-        public virtual DbSet<NW_Shipper> NW_Shipper { get; set; }
-        public virtual DbSet<NW_Supplier> NW_Supplier { get; set; }
-        public virtual DbSet<NW_Territorie> NW_Territorie { get; set; }
+        public virtual DbSet<Categorie> Categories { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CustomerCustomerDemo> CustomerCustomerDemoes { get; set; }
+        public virtual DbSet<CustomerDemographic> CustomerDemographics { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<EmployeeTerritorie> EmployeeTerritories { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Region> Regions { get; set; }
+        public virtual DbSet<Shipper> Shippers { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<Territorie> Territories { get; set; }
     
         public virtual ObjectResult<GetCustomerById_Result> GetCustomerById(string customerId)
         {

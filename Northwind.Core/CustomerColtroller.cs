@@ -65,7 +65,7 @@ namespace Northwind.Core
             CustomerResult respons = null;
             try
             {
-                respons = Controller.Get<T, CustomerResult>(Request);
+                respons = Controller.Execute<T, CustomerResult>(Request);
                 return respons;
             }
             catch (Exception e)

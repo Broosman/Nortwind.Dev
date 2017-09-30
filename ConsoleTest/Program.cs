@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Northwind.entities;
+using Northwind.Core;
 
 namespace ConsoleTest
 {
@@ -11,8 +12,14 @@ namespace ConsoleTest
     {
         static void Main(string[] args)
         {
-            var req = new Northwind.entities.GetCustomerByIdRequest("ALFKI");
-            Northwind.Core.Controller.Get<GetCustomerByIdRequest, CustomerResult>(req);  
+           var req = new GetCustomerByIdRequest("ALFKI");
+           var result = Controller.Execute<GetCustomerByIdRequest, CustomerResult>(req);
+
+
+            var request = new SaveCustomerRequest();
+            request.Customer = result.Customer;
+            Controller.Execute<SaveCustomerRequest, CustomerResult>(request);
+            
         }
     }
 }

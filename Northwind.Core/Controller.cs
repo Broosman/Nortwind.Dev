@@ -27,7 +27,7 @@ namespace Northwind.Core
     public class Controller
     {
        
-        public static U Get<T,U>(T request)
+        public static U Execute<T,U>(T request)
         {
             try
             {
@@ -47,6 +47,10 @@ namespace Northwind.Core
             {
                 return new GetCustomerById();
             }
+            else if(request is SaveCustomerRequest)
+            {
+                return new SaveCustomer();
+            }
             return null;
         }
  /*
@@ -64,7 +68,7 @@ namespace Northwind.Core
                 GetProducts = new GetProducts();
                 respons = new ProductsResults
                 {
-                    Products = GetProducts.Execute<List<NW_Product>>(),
+                    Products = GetProducts.Execute<List<Product>>(),
                     StatusObject = GetProducts.StatusObject
                 };
             }
@@ -96,7 +100,7 @@ namespace Northwind.Core
                 GetCustomers = new GetCustomers();
                 respons = new CustomersResults
                 {
-                    Customers = GetCustomers.Execute<List<NW_Customer>>(),
+                    Customers = GetCustomers.Execute<List<Customer>>(),
                     StatusObject = GetCustomers.StatusObject
                 };
             }
@@ -124,7 +128,7 @@ namespace Northwind.Core
                 GetCustomerSummary = new GetCustomerSummary(req.Customer.CustomerID);
                 respons = new CustomerResult
                 {
-                    Customer = GetCustomerSummary.Execute<NW_Customer>(),
+                    Customer = GetCustomerSummary.Execute<Customer>(),
                     StatusObject = GetCustomerSummary.StatusObject
                 };
             }
@@ -153,7 +157,7 @@ namespace Northwind.Core
                 SaveCustomer = new SaveCustomer(req);
                 respons = new CustomerResult
                 {
-                    Customer = SaveCustomer.Execute<NW_Customer>(),
+                    Customer = SaveCustomer.Execute<Customer>(),
                     StatusObject = SaveCustomer.StatusObject
                 };
             }

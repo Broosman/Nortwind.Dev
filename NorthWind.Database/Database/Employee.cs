@@ -12,13 +12,13 @@ namespace Northwind.Database.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class NW_Employee
+    public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NW_Employee()
+        public Employee()
         {
-            this.NW_Employee1 = new HashSet<NW_Employee>();
-            this.NW_Order = new HashSet<NW_Order>();
+            this.Employee1 = new HashSet<Employee>();
+            this.Order = new HashSet<Order>();
         }
     
         public int EmployeeID { get; set; }
@@ -41,9 +41,9 @@ namespace Northwind.Database.Database
         public string PhotoPath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NW_Employee> NW_Employee1 { get; set; }
-        public virtual NW_Employee NW_Employee2 { get; set; }
+        public virtual ICollection<Employee> Employee1 { get; set; }
+        public virtual Employee Employee2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NW_Order> NW_Order { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace Northwind.Core.Customer.Actions
                 var Customerid = req.Customerid;
                // Rules.CheckCustomerId(Customerid);
                 CustomerResult res = new CustomerResult();            
-                res.Customer = null; // DbManager.GetCustomerById(Customerid);
+                res.Customer =  DbManager.GetCustomerById(Customerid);
                 res.StatusObject = null;
                // Rules.ChangePhoneIf030(Customer.Phone);
                 return (U)Convert.ChangeType(res, typeof(U));

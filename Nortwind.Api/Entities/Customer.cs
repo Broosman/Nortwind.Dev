@@ -20,7 +20,7 @@ namespace Northwind.Api.Entities
         public string Fax { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 
-        public static Customer Convert(Database.Database.NW_Customer  source)
+        public static Customer Convert(Database.Database.Customer  source)
         {
             if (source == null) return null;
             var destination = new Customer();
@@ -48,10 +48,10 @@ namespace Northwind.Api.Entities
             return destination;
         }
 
-        public static Database.Database.NW_Customer Convert(Customer source)
+        public static Database.Database.Customer Convert(Customer source)
         {
             if (source == null) return null;
-            var destination = new Database.Database.NW_Customer();
+            var destination = new Database.Database.Customer();
             destination.CustomerID = source.CustomerID;
             destination.CompanyName = source.CompanyName;
             destination.ContactName = source.ContactName;
@@ -66,7 +66,7 @@ namespace Northwind.Api.Entities
 
             if (source.Orders != null)
             {
-                destination.Orders = new List<Database.Database.NW_Order>();
+                destination.Orders = new List<Database.Database.Order>();
                 foreach (var order in source.Orders)
                 {
                     var nw_order = Order.Convert(order);
@@ -78,10 +78,10 @@ namespace Northwind.Api.Entities
     }
 }
 
-//        public static Database.Database.NW_Customer ToBussinessEntity(Aggregations.Customer source)
+//        public static Database.Database.Customer ToBussinessEntity(Aggregations.Customer source)
 //        {
 //            if (source == null) return null;
-//            var destination = new Database.Database.NW_Customer();
+//            var destination = new Database.Database.Customer();
 //            destination.CustomerID = source.CustomerID;
 //            destination.CompanyName = source.CompanyName;
 //            destination.ContactName = source.ContactName;
@@ -95,7 +95,7 @@ namespace Northwind.Api.Entities
 //            destination.Fax = source.Fax;
 //            if (source.Orders != null)
 //            {
-//                destination.Orders = new List<Database.Database.NW_Order>();
+//                destination.Orders = new List<Database.Database.Order>();
 //                foreach (var order in source.Orders)
 //                {
 //                    //var o = ToRespons(order);

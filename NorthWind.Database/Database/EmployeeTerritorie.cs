@@ -12,15 +12,11 @@ namespace Northwind.Database.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class NW_OrderDetail
+    public partial class EmployeeTerritorie
     {
-        public int OrderID { get; set; }
-        public int ProductID { get; set; }
-        public decimal UnitPrice { get; set; }
-        public short Quantity { get; set; }
-        public float Discount { get; set; }
+        public int EmployeeID { get; set; }
+        public string TerritoryID { get; set; }
     
-        public virtual NW_Order Order { get; set; }
-        public virtual NW_Product Product { get; set; }
+        public virtual Territorie Territorie { get; set; }
     }
 }

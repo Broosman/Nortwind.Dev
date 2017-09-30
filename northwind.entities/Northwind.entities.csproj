@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
+    <Compile Include="DataHolder\Request\SaveCustomerRequest.cs" />
     <Compile Include="DataHolder\Respons\CustomerResult.cs" />
     <Compile Include="DataHolder\Request\GetCustomerByIdRequest.cs" />
     <Compile Include="Order.cs" />

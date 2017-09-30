@@ -22,7 +22,7 @@ namespace Northwind.Api.Entities
         public virtual Categorie Categorie { get; set; }
         public virtual Supplier Supplier { get; set; }
 
-        public static Product Convert(NW_Product source)
+        public static Product Convert(Product source)
         {
             var destination = new Product();
             destination.ProductID = source.ProductID;
@@ -39,9 +39,9 @@ namespace Northwind.Api.Entities
             return destination;
         }
 
-        public static NW_Product Convert(Product  source)
+        public static Product Convert(Product  source)
         {
-            var destination = new NW_Product();
+            var destination = new Product();
             destination.ProductID = source.ProductID;
             destination.ProductName = source.ProductName;
             destination.SupplierID = source.SupplierID;

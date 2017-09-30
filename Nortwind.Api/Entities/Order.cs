@@ -28,7 +28,7 @@ namespace Northwind.Api.Entities
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual Shipper Shipper { get; set; }
 
-        public static Order Convert(NW_Order source)
+        public static Order Convert(Order source)
         {
             var destination = new Order();
             destination.OrderID = source.OrderID;
@@ -60,9 +60,9 @@ namespace Northwind.Api.Entities
 
             return destination;
         }
-        public static Database.Database.NW_Order Convert(Order  source)
+        public static Database.Database.Order Convert(Order  source)
         {
-            var destination = new NW_Order ();
+            var destination = new Order ();
             destination.OrderID = source.OrderID;
             destination.CustomerID = source.CustomerID;
             destination.EmployeeID = source.EmployeeID;
@@ -82,7 +82,7 @@ namespace Northwind.Api.Entities
 
             if (source.OrderDetails  != null)
             {
-                destination.OrderDetails  = new List<NW_OrderDetail>();
+                destination.OrderDetails  = new List<OrderDetail>();
                 foreach (var orddtl in source.OrderDetails)
                 {
                     var oOrderDetail = OrderDetail.Convert(orddtl);

@@ -10,6 +10,6 @@ namespace Northwind.entities
         {
            Customerid = customerid;
         }
-        public static string Customerid { get; set; }
+        public string Customerid { get; set; }
     }
 }

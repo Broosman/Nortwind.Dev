@@ -12,11 +12,11 @@ namespace Northwind.Database.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class NW_CustomerCustomerDemo
+    public partial class CustomerCustomerDemo
     {
         public string CustomerID { get; set; }
         public string CustomerTypeID { get; set; }
     
-        public virtual NW_CustomerDemographic NW_CustomerDemographic { get; set; }
+        public virtual CustomerDemographic CustomerDemographic { get; set; }
     }
 }

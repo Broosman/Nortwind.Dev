@@ -12,12 +12,12 @@ namespace Northwind.Database.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class NW_Territorie
+    public partial class Territorie
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NW_Territorie()
+        public Territorie()
         {
-            this.NW_EmployeeTerritorie = new HashSet<NW_EmployeeTerritorie>();
+            this.EmployeeTerritorie = new HashSet<EmployeeTerritorie>();
         }
     
         public string TerritoryID { get; set; }
@@ -25,7 +25,7 @@ namespace Northwind.Database.Database
         public int RegionID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NW_EmployeeTerritorie> NW_EmployeeTerritorie { get; set; }
-        public virtual NW_Region NW_Region { get; set; }
+        public virtual ICollection<EmployeeTerritorie> EmployeeTerritorie { get; set; }
+        public virtual Region Region { get; set; }
     }
 }

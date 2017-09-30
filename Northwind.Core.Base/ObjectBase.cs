@@ -55,12 +55,68 @@ namespace Northwind.Core.Base
             set;
         }
 
+        StatusObject IBussinessObject.StatusObject
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        RuleBase IBussinessObject.Rules
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        object IBussinessObject.Entity
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        IEnumerable<object> IBussinessObject.Entities
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         //public virtual T Execute<T>(RequestBase Request)
         //{
         //    throw new System.NotImplementedException();
         //}
 
         public virtual U Execute<T,U>(T request)
+        {
+            throw new System.NotImplementedException();
+        }
+        public virtual U Execute<U>()
         {
             throw new System.NotImplementedException();
         }
@@ -100,6 +156,5 @@ namespace Northwind.Core.Base
             }
             StatusObject.Exception = e;
         }
-
     }
 }

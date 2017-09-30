@@ -2005,7 +2005,7 @@
     <packageHasNamedElement>
       <class
         Id="13cc7065-02c9-4859-898b-3f8307cb042d"
-        name="NW_Customer"
+        name="Customer"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -2979,7 +2979,7 @@
             isAbstract="false">
             <classMoniker
               Id="13cc7065-02c9-4859-898b-3f8307cb042d"
-              LastKnownName="NW_Customer"
+              LastKnownName="Customer"
               LastKnownLocation="NorthwindModel.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -3019,7 +3019,7 @@
             isAbstract="false">
             <classMoniker
               Id="13cc7065-02c9-4859-898b-3f8307cb042d"
-              LastKnownName="NW_Customer"
+              LastKnownName="Customer"
               LastKnownLocation="NorthwindModel.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -3411,7 +3411,7 @@
                   <type_NamedElement>
                     <classMoniker
                       Id="13cc7065-02c9-4859-898b-3f8307cb042d"
-                      LastKnownName="NW_Customer"
+                      LastKnownName="Customer"
                       LastKnownLocation="NorthwindModel.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -4319,7 +4319,7 @@
             <type_NamedElement>
               <classMoniker
                 Id="13cc7065-02c9-4859-898b-3f8307cb042d"
-                LastKnownName="NW_Customer"
+                LastKnownName="Customer"
                 LastKnownLocation="NorthwindModel.uml" />
             </type_NamedElement>
           </property>

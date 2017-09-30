@@ -22,6 +22,7 @@ namespace Northwind.Core.Base
        // T Execute<T>(RequestBase RequestBase);
 
         U Execute<T, U>(T Request);
+        U Execute<U>();
 
     }
 }

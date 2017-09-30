@@ -15,7 +15,7 @@ namespace Northwind.Api.Entities
         public float Discount { get; set; }
         public virtual Product Product { get; set; }
 
-        public static OrderDetail Convert(NW_OrderDetail source)
+        public static OrderDetail Convert(OrderDetail source)
         {
             var destination = new OrderDetail();
             destination.OrderID = source.OrderID;
@@ -28,9 +28,9 @@ namespace Northwind.Api.Entities
             return destination;
         }
 
-        public static NW_OrderDetail Convert(OrderDetail  source)
+        public static OrderDetail Convert(OrderDetail  source)
         {
-            var destination = new NW_OrderDetail();
+            var destination = new OrderDetail();
             destination.OrderID = source.OrderID;
             destination.ProductID = source.ProductID;
             destination.UnitPrice = source.UnitPrice;

@@ -12,12 +12,12 @@ namespace Northwind.Database.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class NW_Product
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NW_Product()
+        public Product()
         {
-            this.NW_OrderDetail = new HashSet<NW_OrderDetail>();
+            this.OrderDetail = new HashSet<OrderDetail>();
         }
     
         public int ProductID { get; set; }
@@ -31,9 +31,9 @@ namespace Northwind.Database.Database
         public Nullable<short> ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
     
-        public virtual NW_Categorie NW_Categorie { get; set; }
+        public virtual Categorie Categorie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NW_OrderDetail> NW_OrderDetail { get; set; }
-        public virtual NW_Supplier NW_Supplier { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

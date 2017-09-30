@@ -61,6 +61,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Categorie.cs">
+      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Customer.cs">
+      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CustomerCustomerDemo.cs">
+      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CustomerDemographic.cs">
+      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Employee.cs">
+      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EmployeeTerritorie.cs">
+      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\GetCustomerById_Result.cs">
       <DependentUpon>NorthwindDataModel.tt</DependentUpon>
     </Compile>
@@ -82,43 +100,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NorthwindDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Database\NW_Categorie.cs">
+    <Compile Include="Database\Order.cs">
       <DependentUpon>NorthwindDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\NW_Customer.cs">
+    <Compile Include="Database\OrderDetail.cs">
       <DependentUpon>NorthwindDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\NW_CustomerCustomerDemo.cs">
+    <Compile Include="Database\Product.cs">
       <DependentUpon>NorthwindDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\NW_CustomerDemographic.cs">
+    <Compile Include="Database\Region.cs">
       <DependentUpon>NorthwindDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\NW_Employee.cs">
+    <Compile Include="Database\Shipper.cs">
       <DependentUpon>NorthwindDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\NW_EmployeeTerritorie.cs">
+    <Compile Include="Database\Supplier.cs">
       <DependentUpon>NorthwindDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\NW_Order.cs">
-      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\NW_OrderDetail.cs">
-      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\NW_Product.cs">
-      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\NW_Region.cs">
-      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\NW_Shipper.cs">
-      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\NW_Supplier.cs">
-      <DependentUpon>NorthwindDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\NW_Territorie.cs">
+    <Compile Include="Database\Territorie.cs">
       <DependentUpon>NorthwindDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DbManager.cs" />
@@ -157,6 +157,10 @@
     <ProjectReference Include="..\Configs\Northwind.Settings.csproj">
       <Project>{ae5ee197-4e23-4df1-9bed-1dea5919bbaf}</Project>
       <Name>Northwind.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\northwind.entities\Northwind.entities.csproj">
+      <Project>{639b492c-a488-4862-9757-b29dce0d8ea5}</Project>
+      <Name>Northwind.entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

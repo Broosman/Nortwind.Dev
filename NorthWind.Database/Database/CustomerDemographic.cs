@@ -12,19 +12,18 @@ namespace Northwind.Database.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class NW_Shipper
+    public partial class CustomerDemographic
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NW_Shipper()
+        public CustomerDemographic()
         {
-            this.NW_Order = new HashSet<NW_Order>();
+            this.CustomerCustomerDemo = new HashSet<CustomerCustomerDemo>();
         }
     
-        public int ShipperID { get; set; }
-        public string CompanyName { get; set; }
-        public string Phone { get; set; }
+        public string CustomerTypeID { get; set; }
+        public string CustomerDesc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NW_Order> NW_Order { get; set; }
+        public virtual ICollection<CustomerCustomerDemo> CustomerCustomerDemo { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace Northwind.Database.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class NW_Order
+    public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NW_Order()
+        public Order()
         {
-            this.OrderDetails = new HashSet<NW_OrderDetail>();
+            this.OrderDetails = new HashSet<OrderDetail>();
         }
     
         public int OrderID { get; set; }
@@ -35,10 +35,10 @@ namespace Northwind.Database.Database
         public string ShipPostalCode { get; set; }
         public string ShipCountry { get; set; }
     
-        public virtual NW_Customer Customer { get; set; }
-        public virtual NW_Employee Employee { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NW_OrderDetail> OrderDetails { get; set; }
-        public virtual NW_Shipper Shipper { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual Shipper Shipper { get; set; }
     }
 }

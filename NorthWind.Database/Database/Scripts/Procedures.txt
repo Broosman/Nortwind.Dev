@@ -19,7 +19,7 @@ SELECT [CustomerID]
       ,[Country]
       ,[Phone]
       ,[Fax]
-	   FROM NW_Customer where customerid = @CustomerId 
+	   FROM Customer where customerid = @CustomerId 
 GO
 /****** Object:  StoredProcedure [dbo].[GetCustomerOrderProductSummary]    Script Date: 2016-11-22 15:24:29 ******/
 SET ANSI_NULLS ON
@@ -46,7 +46,7 @@ SELECT [CustomerID]
       ,[Country]
       ,[Phone]
       ,[Fax]
-	   FROM NW_Customer where customerid = @CustomerId 
+	   FROM Customer where customerid = @CustomerId 
 
 SELECT [OrderID]
       ,[CustomerID]
@@ -62,14 +62,14 @@ SELECT [OrderID]
       ,[ShipRegion]
       ,[ShipPostalCode]
       ,[ShipCountry]
-	   FROM NW_ORDER where customerid = @CustomerId 
+	   FROM ORDER where customerid = @CustomerId 
 
 SELECT DT.[OrderID]
       ,DT.[ProductID]
       ,DT.[UnitPrice]
       ,DT.[Quantity]
       ,DT.[Discount]
-	  FROM NW_ORDERDETAIL DT INNER JOIN  NW_ORDER O ON DT.ORDERID = O.ORDERID WHERE O.CUSTOMERID = @CustomerId  
+	  FROM ORDERDETAIL DT INNER JOIN  ORDER O ON DT.ORDERID = O.ORDERID WHERE O.CUSTOMERID = @CustomerId  
 
 SELECT p.[ProductID]
       ,p.[ProductName]
@@ -81,7 +81,7 @@ SELECT p.[ProductID]
       ,p.[UnitsOnOrder]
       ,p.[ReorderLevel]
 	  ,[Discontinued]
-	   FROM NW_Product p inner join NW_ORDERDETAIL DT on p.productid = dt.productid INNER JOIN  NW_ORDER O ON DT.ORDERID = O.ORDERID WHERE O.CUSTOMERID = @CustomerId  
+	   FROM Product p inner join ORDERDETAIL DT on p.productid = dt.productid INNER JOIN  ORDER O ON DT.ORDERID = O.ORDERID WHERE O.CUSTOMERID = @CustomerId  
 
 
 SELECT E.[EmployeeID]
@@ -102,14 +102,14 @@ SELECT E.[EmployeeID]
       ,E.[Notes]
       ,E.[ReportsTo]
       ,E.[PhotoPath]
-  FROM [dbo].[NW_Employee] E inner
-  JOIN  NW_ORDER O ON E.EmployeeID  = O.EmployeeID  WHERE O.CUSTOMERID = @CustomerId  
+  FROM [dbo].[Employee] E inner
+  JOIN  ORDER O ON E.EmployeeID  = O.EmployeeID  WHERE O.CUSTOMERID = @CustomerId  
 
 
 --SELECT [ShipperID]
 --      ,[CompanyName]
 --      ,[Phone]
---  FROM [dbo].[NW_Shipper] S INNER JOIN NW_ORDER O ON O.ShipVia = S.ShipperID
+--  FROM [dbo].[Shipper] S INNER JOIN ORDER O ON O.ShipVia = S.ShipperID
 
 
 
@@ -136,7 +136,7 @@ CREATE procedure [dbo].[InsertCustomer]
            ,@Fax nvarchar(24)
 as
 
-INSERT INTO [dbo].[NW_Customer]
+INSERT INTO [dbo].[Customer]
            ([CustomerID]
            ,[CompanyName]
            ,[ContactName]
@@ -186,7 +186,7 @@ AS
 
 
 
-If EXISTS (SELECT NULL FROM [dbo].[NW_Customer] WHERE CustomerID = @CustomerID)
+If EXISTS (SELECT NULL FROM [dbo].[Customer] WHERE CustomerID = @CustomerID)
 	BEGIN
 	EXEC [dbo].[UpdateCustomer]
 	       @CustomerID 
@@ -242,7 +242,7 @@ CREATE procedure [dbo].[UpdateCustomer]
            ,@Fax nvarchar(24)
 as
 
-UPDATE [dbo].[NW_Customer]
+UPDATE [dbo].[Customer]
    SET [CustomerID] = @CustomerID
       ,[CompanyName] = @CompanyName
       ,[ContactName] = @ContactName
