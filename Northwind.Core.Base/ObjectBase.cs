@@ -20,36 +20,8 @@ namespace Northwind.Core.Base
 
         }
 
-        public virtual RequestBase Request
-        {
-            get;
-            set;
-        }
-        public virtual Generell Generell
-        {
-            get;
-            set;
-        }
 
         public virtual StatusObject StatusObject
-        {
-            get;
-            set;
-        }
-
-        public virtual RuleBase Rules
-        {
-            get;
-            set;
-        }
-
-        public virtual IEnumerable<object> Entities
-        {
-            get;
-            set;
-        }
-
-        public virtual object Entity
         {
             get;
             set;
@@ -80,37 +52,6 @@ namespace Northwind.Core.Base
                 throw new NotImplementedException();
             }
         }
-
-        object IBussinessObject.Entity
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        IEnumerable<object> IBussinessObject.Entities
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        //public virtual T Execute<T>(RequestBase Request)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
 
         public virtual U Execute<T,U>(T request)
         {
@@ -155,6 +96,16 @@ namespace Northwind.Core.Base
                 StatusObject.StackTrace = e.StackTrace;
             }
             StatusObject.Exception = e;
+        }
+
+        public virtual void AddRequest<T>(T request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void AddRespons<T>(T respons)
+        {
+            throw new NotImplementedException();
         }
     }
 }

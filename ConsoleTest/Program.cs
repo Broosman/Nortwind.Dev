@@ -18,7 +18,7 @@ namespace ConsoleTest
 
             var request = new SaveCustomerRequest();
             request.Customer = result.Customer;
-            Controller.Execute<SaveCustomerRequest, CustomerResult>(request);
+           var res = Controller.Execute<SaveCustomerRequest, CustomerResult>(request);
             
         }
     }

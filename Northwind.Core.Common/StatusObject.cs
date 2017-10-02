@@ -13,7 +13,9 @@ namespace Northwind.Core.Common
 
     public class StatusObject
     {
-
+        public StatusObject()
+        {
+        }
         public virtual bool Ok
         {
             get;
@@ -74,22 +76,6 @@ namespace Northwind.Core.Common
             get;
             set;
         }
-
-
-        //public virtual void RuleHit(string Message)
-        //{
-        //    this.Status = Common.Status.INFO;
-        //    this.StatusText = Common.Status.INFO.ToString();
-        //    this.Message = Message;
-        //}
-
-        //public virtual void Error(System.Exception e)
-        //{
-        //    this.Status = Common.Status.ERROR;
-        //    this.StatusText = Common.Status.ERROR.ToString();
-        //    this.StackTrace = e.StackTrace;
-        //    this.Message = e.Message;
-        //}
 
     }
 

@@ -20,7 +20,7 @@ namespace Northwind.Core.Customer.Actions
 
         public SaveCustomer() : base()
         {
-            this.Request = Request;
+            
         }
 
         public override U Execute<T,U>(T request)
@@ -28,9 +28,18 @@ namespace Northwind.Core.Customer.Actions
             try
             {
                 var req = request as entities.SaveCustomerRequest;
-                var res = new entities.CustomerResult();
-                res.Customer = DbManager.SaveCustomer(req.Customer);
-                return (U)Convert.ChangeType(res, typeof(U));
+                AddRequest<entities.Customer>(req.Customer); 
+                Rules(CustomerRules.Check1);
+                Rules(CustomerRules.Check2);
+                Rules(CustomerRules.Check11);
+                Rules(CustomerRules.Check12);
+                var Customer = DbManager.SaveCustomer(req.Customer);
+                AddRespons<entities.Customer>(Customer);
+                Rules(CustomerRules.Check13);
+                var Result = new CustomerResult();
+                Result.Customer = Customer;
+                Result.StatusObject = StatusObject;
+                return (U)Convert.ChangeType(Result, typeof(U));
             }
             catch (Exception e)
             {
@@ -42,11 +51,11 @@ namespace Northwind.Core.Customer.Actions
 
         private void Validate()
         {
-            Rules.CheckCustomer(Customer);
+           
         }
         private void ValidateRespons()
         {
-            Rules.ChangePhoneIf030(Customer.Phone);
+           
         }
     }
 

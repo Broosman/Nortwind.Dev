@@ -39,6 +39,7 @@ namespace Northwind.Core.Customer.Actions
 
         public GetCustomerById() : base()
         {
+   
         }
 
     }

@@ -13,13 +13,9 @@ namespace Northwind.Core.Base
 
         RuleBase Rules { get; set; }
 
-        object Entity { get; set; }
+        void AddRequest<T>(T RequestBase);
 
-        IEnumerable<object> Entities { get; set; }
-
-        void Addrequest(RequestBase RequestBase);
-
-       // T Execute<T>(RequestBase RequestBase);
+        void AddRespons<T>(T RequestBase);
 
         U Execute<T, U>(T Request);
         U Execute<U>();
