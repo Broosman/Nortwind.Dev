@@ -69,13 +69,13 @@ namespace Northwind.Core.Base
 
         public virtual void HandleException(Exception e)
         {
+            //if (e is RuleException)
+            //{
+            //    StatusObject.Ok = false;
+            //    StatusObject.Status = Status.NOT_VALID;
+            //    StatusObject.Message = e.Message;
+            //}
             if (e is RuleException)
-            {
-                StatusObject.Ok = false;
-                StatusObject.Status = Status.NOT_VALID;
-                StatusObject.Message = e.Message;
-            }
-            else if (e is RuleException)
             {
                 StatusObject.Ok = false;
                 StatusObject.Status = Status.INFO;
